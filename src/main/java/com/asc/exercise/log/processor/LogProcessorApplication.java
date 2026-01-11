@@ -7,6 +7,7 @@ import com.asc.exercise.log.processor.output.JsonFileOutputWriter;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Scanner;
 
 public class LogProcessorApplication {
@@ -33,8 +34,10 @@ public class LogProcessorApplication {
 
             LogProcessor processor = new LogProcessor(
                     new TextFileInputProcessor(inputPath.toString(), new TextAnalyzer()),
-                    new ConsoleOutputWriter(),
-                    new JsonFileOutputWriter(outputPath.toString())
+                    List.of(
+                            new ConsoleOutputWriter(),
+                            new JsonFileOutputWriter(outputPath.toString())
+                    )
             );
 
             processor.process();

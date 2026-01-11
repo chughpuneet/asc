@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import static org.mockito.Mockito.verify;
@@ -32,7 +33,7 @@ class LogProcessorTest {
 
     @BeforeEach
     void setUp() {
-        logProcessor = new LogProcessor(inputProcessor, consoleOutputWriter, jsonFileOutputWriter);
+        logProcessor = new LogProcessor(inputProcessor, List.of(consoleOutputWriter, jsonFileOutputWriter));
     }
 
     @Test
